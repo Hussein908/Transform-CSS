@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Transform</title>
+
+		<!-- Style -->
+		<style type="text/css">
+			* {
+				margin: 0;
+				height: 100%;
+				width: 100%;
+			}
+			header {
+				background-color: rgb(25, 25, 25);
+				font: 36px 'Segoe UI';
+				text-align: center;
+				color: white;
+				height: 100px;
+				line-height: 100px;
+			}
+			footer {
+				background-color: #282923;
+				color: white;
+				font: 12px 'Verdana';
+				line-height: 20px;
+			}
+			body {
+				background-color: #4D4D4D;	
+				overflow: hidden;	
+			}
+			.container {
+				position: relative;
+				margin: 200px auto;
+				width: 200px;
+				height: 200px;				
+				perspective: 500px;
+			}
+			.cube {				
+				width: inherit;
+				height: inherit;
+				transform-style: preserve-3d;
+			}
+			.side {
+				position: absolute;
+				border: 3px;
+				border-style: solid;
+				border-color: white;
+				width: inherit;
+				height: inherit;
+				font: 24px 'Comic Sans MS';
+				text-align: center;
+				line-height: 200px;
+				color: black;
+				text-shadow: 1px 1px 3px;
+				box-shadow: 2px 2px 6px gold;
+				background-color: rgba(176, 223, 229, .4);
+				opacity: .4;
+				border-radius: 5px;	
+				backface-visibility: hidden;			
+			}
+			.front {
+				background-color: red;
+				transform: translateZ(100px);
+			}
+			.back {
+				background-color: green;
+				transform: rotateY(180deg) translateZ(100px);
+			}
+			.left {
+				background-color: blue;
+				transform: rotateY(-90deg) translateZ(100px);
+			}
+			.right {
+				background-color: orange;
+				transform: rotateY(90deg) translateZ(100px);
+			}
+			.top {
+				background-color: yellow;
+				transform: rotateX(90deg) translateZ(100px);
+			}
+			.bottom {
+				background-color: white;
+				transform: rotateX(-90deg) translateZ(100px);
+			}
+			/*  scale - metodu şəkilin ölçülərini dəyişir.  */
+			/*transform: scale(2, -12);*/
+			/*	translate - metodu şəkili X və ya Y oxları üzrə hərəkət etdirir.  */
+			/*transform: translateY(320px) rotate(45deg);*/
+			/*	skew - metodu şəkili istədiyimiz dərəcədə əyir.  */
+			/*transform: skew(12deg, 56deg);*/			
+		</style>
+		<!-- Style -->
+
+	</head>
+	<body>
+		<!-- Header -->
+		<header>
+			<h2>Oxlar ilə hərəkət etdir.</h2>
+		</header>
+		<!-- Header -->
+
+		<!-- Container -->
+		<div class="container">
+			<div class="cube">
+				<div class="side front">Front</div>
+				<div class="side back">Back</div>
+				<div class="side left">Left</div>
+				<div class="side right">Right</div>
+				<div class="side top">Top</div>
+				<div class="side bottom">Bottom</div>
+			</div>	
+		</div>
+		<!-- Container -->
+
+		<!-- Footer -->
+		<footer>
+			<p><span>&nbsp</span>Hüseyn tərəfindən hazırlanmışdır - 2020</p>
+		</footer>
+		<!-- Footer -->
+
+		<!-- Script -->
+		<script>
+			(function () {			
+				var rotateY = 0, rotateX = 0;
+				document.onkeydown = function (e) {
+					if (e.keyCode === 37) rotateY -= 4;
+					else if (e.keyCode === 38) rotateX += 4;
+					else if (e.keyCode === 39) rotateY += 4;
+					else if (e.keyCode === 40) rotateX -= 4;
+					document.querySelector('.cube').style.transform = 'rotateY(' + rotateY + 'deg)' + 'rotateX(' + rotateX + 'deg)';			
+				}
+			})();	
+		</script>
+		<!-- Script -->		
+	</body>	
+</html>
